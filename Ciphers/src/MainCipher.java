@@ -17,7 +17,7 @@ public class MainCipher {
     public void mainCipher(){
         String text= "Valentina";
         int key = 1;
-        int keyB = 3;
+        int keyB = 5;
         String keyV = "sun";
 
 

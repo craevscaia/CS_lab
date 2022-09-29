@@ -118,11 +118,65 @@ Decrypted text using Caesar Cipher valentina
 
 
 ### Affine Cipher Implementation
+Affine Cipher has 2 classes, first one represent an interface with two methods
+encrypt and decrypt with three given parameters the plain text and two keys, a and b.
+The second class implements the interface with its methods. The Encrypt() method takes
+the string of lower case letters and traverse it, one character at a time. 
+For each character, transform it, following the mathematical expression: 
+(keyA * charIndex + keyB) % 26, using the given keys and return the new 
+generated string. The Decrypt() method takes the encrypted text and uses the same keys.
+Comparing to the encryption process, here we need the multiplicative inverse of keyA
+that will be used in the decryption mathematical expression. To determine the inverse
+the MultiplicativeInverse(int keyA) method is being called.
+
+````
+ public String Encrypt(String text, int keyA, int keyB){
+        text = text.toLowerCase();
+        StringBuilder encryptedText = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            int charIndex = alphabet.indexOf(text.charAt(i));
+            int newIndex = (keyA * charIndex + keyB) % 26;
+            encryptedText.append(alphabet.charAt(newIndex));
+        }
+
+        return encryptedText.toString();
+    }
+````
+
+````
+public String Decrypt(String text, int keyA, int keyB) {
+        var plaintext = "";
+
+        var aInvers = MultiplicativeInverse(keyA);
+
+        var chars = text.toUpperCase().toCharArray();
+
+        for (var c : chars) {
+            var x = (int) (c - 65);
+            if (x - keyB < 0) {
+                x += (int) (x) + 26;
+            }
+            plaintext += (char) (((aInvers * (x - keyB)) % 26) + 65);
+        }
+        return plaintext;
+    }
+````
+
+````
+ private static int MultiplicativeInverse(int keyA) {
+        for (var i = 1; i < 27; i++) {
+            if ((keyA * i) % 26 == 1) {
+                return i;
+            }
+        }
+        return keyA;
+    }
+````
 
 **Output**
 ````
-Encrypted text using Affine Cipher DGULDQ
-Decrypted text using Affine Cipher Adrian
+Encrypted text using Affine Cipher afqjsynsf
+Decrypted text using Affine Cipher valentina
 ````
 
 
@@ -362,7 +416,6 @@ public String Encrypt() {
 The decryption() method follow the same principle as in the encryption().
 ````
 public String Decrypt(String text) {
-
         String decText = "";
         for (int i = 0; i < text.length() / 2; i++) {
             char a = text.charAt(2 * i);
