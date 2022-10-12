@@ -1,4 +1,5 @@
 import AffineCipher.AffineCipher;
+import BlockCipher.DESCipher;
 import CaesarCipher.CaesarCipher;
 import PlayfairCipher.PlayfairCipher;
 import ViginereCipher.ViginereCipher;
@@ -22,6 +23,14 @@ public class Main {
         System.out.println("Encrypted text is: " + enc);
         String dec = text.Decrypt("rpcxhegb");
         System.out.println("Decrypted text is: " + dec);
+
+        String plainText = "123456ACCD132536";
+        String key = "ABBB02389836CCAA";
+
+        DESCipher cipher = new DESCipher();
+        String encryptedText = cipher.encrypt(plainText, key);
+        String decryptedText = cipher.decrypt(encryptedText, key);
+
 
     }
 }
