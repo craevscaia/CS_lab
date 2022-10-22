@@ -1,4 +1,5 @@
 import AffineCipher.IAffineCipher;
+import AsymmetricCipher.RSACipher;
 import CaesarCipher.ICaesarCipher;
 import ViginereCipher.IViginereCipher;
 
@@ -36,5 +37,9 @@ public class MainCipher {
         var decryptedAffine = affineCipher.Decrypt(encryptedAffine, key, keyB);
         System.out.println("Encrypted text using Affine Cipher " + encryptedAffine);
         System.out.println("Decrypted text using Affine Cipher " + decryptedAffine);
+        
+        RSACipher rsa = new RSACipher(89, 11);
+        int encryptedText =  rsa.encrypt(158);
+        rsa.decrypt(encryptedText);
     }
 }
