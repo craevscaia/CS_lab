@@ -2,7 +2,7 @@
 from StreamCipher.RC4Interface import RC4Interface
 
 
-class RC4():
+class RC4(RC4Interface):
 
 
 def encryption():

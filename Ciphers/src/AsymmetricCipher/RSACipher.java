@@ -18,7 +18,6 @@ public class RSACipher implements IRSACipher {
         int ciphertext;
 
         for (e = 2; e < phi; e++) {
-
             // e is for public key exponent
             if (gcd(e, phi) == 1) {
                 break;
@@ -35,7 +34,6 @@ public class RSACipher implements IRSACipher {
 
         for (int i = 0; i <= 9; i++) {
             int x = 1 + (i * phi);
-
             // d is for private key exponent
             if (x % e == 0) {
                 d = x / e;
