@@ -42,11 +42,11 @@ public class RSACipher implements IRSACipher {
                 break;
             }
         }
-        // converting int value of n to BigInteger
+        // converting int value
         BigInteger N = BigInteger.valueOf(n);
-
         // converting float value
         BigInteger cipher = BigDecimal.valueOf(cipherText).toBigInteger();
+
         decryptedText = (cipher.pow(d)).mod(N);
         System.out.println("Decrypted message is : " + decryptedText);
 
