@@ -1,4 +1,5 @@
 import AffineCipher.IAffineCipher;
+import AsymmetricCipher.IRSACipher;
 import AsymmetricCipher.RSACipher;
 import CaesarCipher.ICaesarCipher;
 import ViginereCipher.IViginereCipher;
@@ -8,11 +9,14 @@ public class MainCipher {
     private IViginereCipher viginereCipher;
     private IAffineCipher affineCipher;
 
+    private IRSACipher rsaCipher;
+
     public MainCipher(ICaesarCipher caesarCipher,
-                      IViginereCipher viginereCipher, IAffineCipher affineCipher) {
+                      IViginereCipher viginereCipher, IAffineCipher affineCipher, IRSACipher rsaCipher) {
         this.caesarCipher = caesarCipher;
         this.viginereCipher = viginereCipher;
         this.affineCipher = affineCipher;
+        this.rsaCipher = rsaCipher;
     }
 
     public void mainCipher(){

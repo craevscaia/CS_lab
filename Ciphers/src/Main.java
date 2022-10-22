@@ -1,4 +1,5 @@
 import AffineCipher.AffineCipher;
+import AsymmetricCipher.RSACipher;
 import BlockCipher.DESCipher;
 import CaesarCipher.CaesarCipher;
 import PlayfairCipher.PlayfairCipher;
@@ -6,7 +7,7 @@ import ViginereCipher.ViginereCipher;
 
 public class Main {
     public static void main(String[] args) {
-        MainCipher main = new MainCipher(new CaesarCipher(), new ViginereCipher(), new AffineCipher());
+        MainCipher main = new MainCipher(new CaesarCipher(), new ViginereCipher(), new AffineCipher(), new RSACipher(89, 11));
         main.mainCipher();
 
         String key1 = "Problem";
