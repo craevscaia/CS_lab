@@ -1,4 +1,4 @@
-package PlayfairCipher;
+package ClassicalCiphers.Interface;
 
 public interface IPlayfairCipher {
     String Encrypt();

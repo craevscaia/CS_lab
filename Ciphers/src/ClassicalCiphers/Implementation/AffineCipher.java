@@ -1,4 +1,6 @@
-package AffineCipher;
+package ClassicalCiphers.Implementation;
+
+import ClassicalCiphers.Interface.IAffineCipher;
 
 public class AffineCipher implements IAffineCipher {
 

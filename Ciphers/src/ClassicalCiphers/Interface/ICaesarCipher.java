@@ -1,4 +1,4 @@
-package CaesarCipher;
+package ClassicalCiphers.Interface;
 
 public interface ICaesarCipher {
     String Encrypt(String text, int key);

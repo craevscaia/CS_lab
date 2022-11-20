@@ -1,6 +1,8 @@
-package CaesarCipher;
+package ClassicalCiphers.Implementation;
 
-public class CaesarCipher implements ICaesarCipher{
+import ClassicalCiphers.Interface.ICaesarCipher;
+
+public class CaesarCipher implements ICaesarCipher {
 
     static String alphabet = "abcdefghijklmnopqrstuvwxyz";
 

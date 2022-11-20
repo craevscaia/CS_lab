@@ -1,8 +1,10 @@
-import AffineCipher.IAffineCipher;
+package Test;
+
+import ClassicalCiphers.Interface.IAffineCipher;
 import AsymmetricCipher.IRSACipher;
 import AsymmetricCipher.RSACipher;
-import CaesarCipher.ICaesarCipher;
-import ViginereCipher.IViginereCipher;
+import ClassicalCiphers.Interface.ICaesarCipher;
+import ClassicalCiphers.Interface.IViginereCipher;
 
 public class MainCipher {
     private ICaesarCipher caesarCipher;

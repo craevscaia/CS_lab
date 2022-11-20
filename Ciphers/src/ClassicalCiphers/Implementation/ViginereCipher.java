@@ -1,9 +1,11 @@
-package ViginereCipher;
+package ClassicalCiphers.Implementation;
+
+import ClassicalCiphers.Interface.IViginereCipher;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViginereCipher implements IViginereCipher{
+public class ViginereCipher implements IViginereCipher {
 
     static String alphabet = "abcdefghijklmnopqrstuvwxyz";
 

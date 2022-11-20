@@ -1,0 +1,134 @@
+# Topic: Hash functions and Digital Signatures.
+## Course: Cryptography & Security
+## Author: Craevscaia Valentina
+
+# Theory
+Hashing is a technique used to compute a new representation of an existing value, 
+message or any piece of text. The new representation is also commonly called a 
+digest of the initial text, and it is a one way function meaning that it should 
+be impossible to retrieve the initial content from the digest.
+
+Such a technique has the following usages:
+
+1. Offering confidentiality when storing passwords,
+2. Checking for integrity for some downloaded files or content,
+3. Creation of digital signatures, which provides integrity and non-repudiation.
+In order to create digital signatures, the initial message or text needs to be hashed 
+to get the digest. After that, the digest is to be encrypted using a public key encryption 
+cipher. Having this, the obtained digital signature can be decrypted with the public key 
+and the hash can be compared with an additional hash computed from the received message 
+to check the integrity of it.
+
+# Objectives:
+1. Get familiar with the hashing techniques/algorithms.
+2. Use an appropriate hashing algorithms to store passwords in a local DB.
+3. Use an asymmetric cipher to implement a digital signature process for a user message.
+   - Take the user input message.
+   - Preprocess the message, if needed.
+   - Get a digest of it via hashing.
+   - Encrypt it with the chosen cipher.
+   - Perform a digital signature check by comparing the hash of the message with the decrypted one.
+
+# Implementation description
+SHA-2 (Secure Hash Algorithm 2), of which SHA-256 is a part, is one of the most popular 
+hash algorithms around. A cryptographic hash, also often referred to as a “digest”, 
+“fingerprint” or “signature”, is an almost perfectly unique string of characters that 
+is generated from a separate piece of input text. SHA-256 generates a 256-bit (32-byte) 
+signature.
+
+### SHA256 with RSA
+The hashing package contains 3 classes, the User class that presents the user input data, like name 
+and password, 
+````
+ public class User {
+    public String name;
+    public byte[] password;
+}
+
+````
+the UserStorage class responsible for managing the user storage, it has the function 
+of Data base
+
+````
+public class UserStorage {
+    public ArrayList<User> usersList = new ArrayList<>();
+
+    public void getUsersList() {
+        for (int i = 0; i < usersList.size(); i++) {
+            System.out.println(usersList.get(i).name);
+        }
+    }
+}
+````
+
+and the CreateUser class that has the aim to create the new user.
+
+To start with, the addUser method deals with adding the new user to the storage,
+with the name and the hashed password. It uses SecureRandom class functions
+to implement digital signature with the SHA256 hash algorithm and RSA asymmetric algorithm,
+by passing the private key. At the end we obtain the updated password.
+
+````
+public byte[] addUser(String name, byte[] password, PrivateKey privateKey)
+         throws Exception
+    {
+        User newUser = new User();
+        newUser.name =name;
+        newUser.password = password;
+        userStorage.usersList.add(newUser);
+        userStorage.getUsersList();
+
+        Signature signature = Signature.getInstance("SHA256withRSA");
+        signature.initSign(privateKey);
+        signature.update(password);
+
+        return signature.sign();
+    }
+````
+The generateRSAKeyPair() method was used for generating the asymmetric key pair, 
+using SecureRandom class functions and RSA algorithm.
+
+````
+   public static KeyPair generateRSAKeyPair()
+            throws Exception
+    {
+        SecureRandom secureRandom = new SecureRandom();
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(2048, secureRandom);
+        return keyPairGenerator.generateKeyPair();
+    }
+
+````
+The verifyDigitalSignature() function was aimed for verification of the digital signature 
+against the original message by using the public key and return the response.
+
+````
+   public boolean verifyDigitalSignature(byte[] password, byte[] signatureToVerify, PublicKey publicKey)
+            throws Exception
+    {
+        Signature signature = Signature.getInstance("SHA256withRSA");
+        signature.initVerify(publicKey);
+        signature.update(password);
+
+        return signature.verify(signatureToVerify);
+    }
+
+````
+
+# Output
+````
+valentina
+80574bc6b4281c48c0645632ef82c8374b791c66177f1bad018859526bad12846b07bf97ee631584376
+df14d6fc84d129eeba00e384b914f57695c1e9cdb3405161cbbd08b0a627d8a248cc54a59908456c1aac
+15f9c5d2cef30fbdb2285fb7faa179b8c5fa82454dd994d3096eb57ec88de05874c12c9b1e763d9aa011 ...
+
+true
+````
+
+# Conclusion
+To sum up, in this laboratory work we got familiar with the  SHA-256 hashing method
+that is a cryptographic security algorithm. We found out that hashes generated by cryptographic 
+hash algorithms are both irreversible and unique. The larger the number of possible hashes, 
+the smaller the chance that two values will create the same hash.
+With SHA-256 algorithm we used the RSA asymmetric cipher to create the digital signature and verify the integrity 
+of a message.

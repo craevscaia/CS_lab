@@ -1,9 +1,11 @@
-package PlayfairCipher;
+package ClassicalCiphers.Implementation;
+
+import ClassicalCiphers.Interface.IPlayfairCipher;
 
 import java.awt.*;
 import java.util.*;
 
-public class PlayfairCipher implements IPlayfairCipher{
+public class PlayfairCipher implements IPlayfairCipher {
 
     String key;
     String plainText;

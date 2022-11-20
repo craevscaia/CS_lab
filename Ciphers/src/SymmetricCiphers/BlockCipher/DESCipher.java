@@ -1,6 +1,6 @@
-package BlockCipher;
+package SymmetricCiphers.BlockCipher;
 
-public class DESCipher {
+public class DESCipher{
     // CONSTANTS
     // Initial Permutation Table
 

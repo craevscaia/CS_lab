@@ -1,4 +1,4 @@
-package ViginereCipher;
+package ClassicalCiphers.Interface;
 
 public interface IViginereCipher {
     String Encrypt(String text, String key);

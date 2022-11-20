@@ -1,4 +1,4 @@
-package AffineCipher;
+package ClassicalCiphers.Interface;
 
 public interface IAffineCipher {
     String Encrypt(String text, int keyA, int keyB);

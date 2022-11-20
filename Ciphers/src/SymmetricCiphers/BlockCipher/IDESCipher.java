@@ -1,4 +1,4 @@
-package BlockCipher;
+package SymmetricCiphers.BlockCipher;
 
 public interface IDESCipher {
     String encrypt(String plainText, String key);

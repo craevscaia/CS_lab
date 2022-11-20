@@ -1,13 +1,15 @@
-import AffineCipher.AffineCipher;
+package Test;
+
+import ClassicalCiphers.Implementation.AffineCipher;
 import AsymmetricCipher.RSACipher;
-import BlockCipher.DESCipher;
-import CaesarCipher.CaesarCipher;
-import PlayfairCipher.PlayfairCipher;
-import ViginereCipher.ViginereCipher;
+import SymmetricCiphers.BlockCipher.DESCipher;
+import ClassicalCiphers.Implementation.CaesarCipher;
+import ClassicalCiphers.Implementation.PlayfairCipher;
+import ClassicalCiphers.Implementation.ViginereCipher;
 
 public class Main {
     public static void main(String[] args) {
-        MainCipher main = new MainCipher(new CaesarCipher(), new ViginereCipher(), new AffineCipher(), new RSACipher(89, 11));
+        MainCipher main = new MainCipher(new CaesarCipher(), new ViginereCipher(), new AffineCipher(), new RSACipher(8900, 191));
         main.mainCipher();
 
         String key1 = "Problem";
