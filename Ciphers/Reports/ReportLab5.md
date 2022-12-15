@@ -66,7 +66,7 @@ After the LogIn is done, which is the basic authentication the MFA was added.
 In our case the 2FA(two-factor authentication) was used.
 This is used to increase the security of the account.
 
-![img_3.png](img_3.png)
+![img_3.png](Images/img_3.png)
 
 As shown in the picture, the code is needed to pursue. The code will be generated
 as soon as the LogIn step was accomplished.
