@@ -1,0 +1,16 @@
+@model ViginereModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    @if (Model.DecryptedResult != null && Model.EncryptedResult != null)
+    {
+        <h3>Initial text: @Model.InitialText</h3>
+        <h3>Encrypted text: @Model.EncryptedResult </h3>
+        @Html.ActionLink("Home", "Index", "Home")
+
+    }
+</div>
